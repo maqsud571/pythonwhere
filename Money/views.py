@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from drf_yasg.utils import swagger_auto_schema
 
 
-class UserRegisterView(APIView):
+class UserRegisterView(APIView):  # Registratsiya
     serializer_class = RegisterSerializer
     queryset = User.objects.all()
     @swagger_auto_schema(request_body=RegisterSerializer)
@@ -19,7 +19,7 @@ class UserRegisterView(APIView):
         return Response({"status": "User created"})
 
 
-class AddMoneyView(APIView):
+class AddMoneyView(APIView): # money add
     serializer_class = AllMoneySerializer
     queryset = AllMoney.objects.all()
     @swagger_auto_schema(request_body=AllMoneySerializer)
@@ -32,7 +32,7 @@ class AddMoneyView(APIView):
             return Response(serializer.errors)
 
 
-class FilterMoney(APIView):
+class FilterMoney(APIView): # requetdankelayotgan puldan bazadegi pullar filterlanyapti
     serializer_class = ChiqimSerializer
     queryset = AllMoney.objects.all()
     @swagger_auto_schema(request_body=ChiqimSerializer)
@@ -51,7 +51,7 @@ class FilterMoney(APIView):
                          })
 
 
-class Top3User(APIView):
+class Top3User(APIView): # bu get APIView shu top3 userni olib kelyapti
     def get(self, request):
         users_list = []
         #################################
